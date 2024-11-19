@@ -1,0 +1,468 @@
+*, ::after, ::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+.labl {
+  position: fixed;
+  top: 5%;
+  right: 2%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: transparent;
+  z-index: 9999;
+}
+
+.burger {
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.burger .bar {
+  padding: 0;
+  width: 40px;
+  height: 4px;
+  background-color: #d3a953;
+  border-radius: 4px;
+  position: absolute;
+  transition: rotate 0.1s, transform 0.2s ease-in-out 0.1s;
+}
+
+.bar1 {
+  top: 1px;
+}
+
+.bar2 {
+  top: 13px;
+}
+
+.bar3 {
+  top: 25px;
+}
+
+input[type=checkbox]:checked + label > .burger > .bar1 {
+  top: 13.5px;
+  transform: rotate(135deg);
+}
+
+input[type=checkbox]:checked + label > .burger > .bar2 {
+  background-color: transparent;
+}
+
+input[type=checkbox]:checked + label > .burger > .bar3 {
+  top: 13.5px;
+  transform: rotate(-135deg);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100vh;
+  translate: 300%;
+  background-color: #1e1c1c;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  transition: translate 0.5s;
+  z-index: 3;
+}
+
+input[type=checkbox]:checked ~ .navbar {
+  translate: 0%;
+}
+
+.navbar li {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar a {
+  color: #bababb;
+  font-family: Dancing Script;
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-transform: none;
+  text-decoration: none;
+  margin: 10px;
+  transition: all 0.5s ease-out;
+}
+
+.navbar a:hover {
+  color: #d3a953;
+  scale: 1.1;
+}
+
+.autrevolet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100vh;
+  background-color: #262626;
+  flex-direction: column;
+  z-index: 2;
+  translate: -300%;
+  transition: translate 0.5s;
+}
+
+input[type=checkbox]:checked ~ .autrevolet {
+  translate: 0%;
+}
+
+.img1 {
+  position: absolute;
+  height: 250px;
+  left: 10%;
+  top: 15%;
+  transform: translateX(-50);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  opacity: 0.8;
+}
+
+.img2 {
+  position: absolute;
+  height: 250px;
+  left: 25%;
+  top: 35%;
+  transform: translateX(-50);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  opacity: 0.8;
+}
+
+.img3 {
+  position: absolute;
+  height: 250px;
+  left: 40%;
+  top: 55%;
+  transform: translateX(-50);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  opacity: 0.8;
+}
+
+.box1 {
+  height: 100vh;
+  background: url(../src/bg.jpeg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.logo1 {
+  display: flex;
+  height: 90px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 5vh;
+  align-items: center;
+}
+
+.bglogo {
+  padding: 4px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: #d3a953 1px solid;
+  margin: 10px;
+}
+
+.logocontour {
+  padding: 15px;
+  width: 80px;
+  height: 80px;
+}
+
+.brandname {
+  color: #bababb;
+  font-family: Josefin Sans;
+  font-size: 2.25rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin: 25px 0 5px 0;
+}
+
+.subtitle {
+  color: #bababb;
+  font-family: Josefin Sans;
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+h1 {
+  color: #d3a953;
+  font-family: Dancing Script;
+  font-size: 4.5rem;
+  font-weight: 300;
+  text-transform: none;
+}
+
+h2 {
+  color: #bababb;
+  font-family: Josefin Sans;
+  font-size: 4rem;
+  font-weight: 200;
+  text-transform: none;
+}
+
+.bouton {
+  color: #d3a953;
+  font-family: Nunito;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 8px 40px 8px 40px;
+  margin-top: 20px;
+  background-color: transparent;
+  border: #d3a953 1px solid;
+  transition: background-color 0.5s;
+}
+
+.bouton:hover {
+  background-color: #d3a953;
+  color: #262626;
+}
+
+.box2 {
+  height: 80vh;
+  background-color: #262626;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 15vh 0 15vh 0;
+  align-items: center;
+  justify-content: center;
+}
+.box2 img {
+  align-self: flex-start;
+  justify-self: center;
+  height: 20vw;
+  object-position: -150px;
+  margin: 10vh 0 10vh 0;
+  opacity: 0.7;
+}
+.box2 h2 {
+  margin: 3vw 0 10vh 0;
+}
+
+.foo {
+  align-self: center;
+  display: inherit;
+  flex-direction: inherit;
+  align-items: center;
+  width: 50vw;
+}
+
+.divide {
+  color: #d3a953;
+  font-family: Nunito;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: none;
+  line-height: 3rem;
+  letter-spacing: 0.5rem;
+}
+
+p {
+  color: #bababb;
+  font-family: Nunito;
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: none;
+  color: #bababb;
+  font-style: italic;
+  text-align: justify;
+  text-indent: 3rem;
+}
+
+.box3 {
+  display: grid;
+  grid: repeat(2, 500px)/repeat(3, 1fr);
+}
+
+.overlay {
+  background-color: rgba(211, 169, 83, 0.5);
+  height: 100%;
+  width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  line-height: 6vh;
+  transition: 0.5s ease-out;
+}
+.overlay h2 {
+  color: white;
+  font-family: Nunito;
+  font-size: 4rem;
+  font-weight: 300;
+  text-transform: none;
+  white-space: nowrap;
+}
+.overlay h3 {
+  color: white;
+  font-family: Josefin Sans;
+  font-size: 2.5rem;
+  font-weight: 200;
+  text-transform: none;
+  margin-bottom: 3vh;
+  white-space: nowrap;
+}
+.overlay button {
+  color: #d3a953;
+  font-family: Nunito;
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-transform: none;
+  background-color: white;
+  border: #d3a953 2px solid;
+  padding: 10px 30px;
+  border-radius: 25px;
+  transition: background-color 0.2s ease-in-out;
+  white-space: nowrap;
+}
+.overlay button:hover {
+  background-color: #d3a953;
+  color: white;
+  border-color: white;
+}
+
+.cartonfood:hover .overlay {
+  width: 100%;
+}
+
+.f1 {
+  background-image: url(../src/gallery-img-1.jpeg);
+  box-shadow: inset 0 0 0 1000px rgba(48, 48, 48, 0.5);
+  background-size: cover;
+  background-position: center;
+}
+
+.f2 {
+  background-image: url(../src/gallery-img-2.jpeg);
+  box-shadow: inset 0 0 0 1000px rgba(48, 48, 48, 0.5);
+  background-size: cover;
+  background-position: center;
+}
+
+.f3 {
+  background-image: url(../src/gallery-img-3.jpeg);
+  box-shadow: inset 0 0 0 1000px rgba(48, 48, 48, 0.5);
+  background-size: cover;
+  background-position: center;
+}
+
+.f4 {
+  background-image: url(../src/gallery-img-4.jpeg);
+  box-shadow: inset 0 0 0 1000px rgba(48, 48, 48, 0.5);
+  background-size: cover;
+  background-position: center;
+}
+
+.f5 {
+  background-image: url(../src/gallery-img-5.jpeg);
+  box-shadow: inset 0 0 0 1000px rgba(48, 48, 48, 0.5);
+  background-size: cover;
+  background-position: center;
+}
+
+.f6 {
+  background-image: url(../src/gallery-img-6.jpeg);
+  box-shadow: inset 0 0 0 1000px rgba(48, 48, 48, 0.5);
+  background-size: cover;
+  background-position: center;
+}
+
+footer {
+  background-color: #262626;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+}
+footer a {
+  color: #bababb;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.piedcore {
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+  align-content: center;
+  justify-content: center;
+  gap: 70px;
+}
+
+.logo2 {
+  display: flex;
+  height: 90px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  scale: 1.5;
+}
+
+.socmedlogo {
+  height: 50px;
+  width: 50px;
+  fill: #bababb;
+  margin: 0 20px;
+  transition: fill 0.5s ease-out;
+}
+.socmedlogo:hover {
+  fill: #d3a953;
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar {
+    left: 0;
+    width: 100%;
+  }
+  .autrevolet {
+    display: none;
+  }
+  h2 {
+    text-align: center;
+    scale: 0.75;
+  }
+  .box2 .foo {
+    width: 90%;
+  }
+  .box2 .foo h2 {
+    margin-bottom: 0vh;
+  }
+  .box2 img {
+    display: none;
+  }
+  .box3 {
+    grid: repeat(3, 500px)/repeat(2, 50vw);
+  }
+  .overlay h2, .overlay h3, .overlay .bouton {
+    scale: 0.65;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

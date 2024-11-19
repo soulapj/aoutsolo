@@ -1,0 +1,404 @@
+*, ::after, ::before{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+//--------------------------------------------------------------------Paramètres
+// Palette Couleur
+$mapColors: (
+    "primary": #d3a953,
+    "secondary": #bababb,
+    "bgc": #262626,
+    "shadeval1": rgba(0,0,0,.7),
+    "shadeval2": rgba(48, 48, 48, 0.5)
+);
+// Parametres texte
+@mixin textf ($color, $fontfam, $fontsize, $fontw, $txtrans) {
+    color: $color;
+    font-family: $fontfam;
+    font-size: $fontsize;
+    font-weight: $fontw;
+    text-transform: $txtrans;
+}
+// Parametres logo
+@mixin logo ($display, $height, $flexd, $flexw) {
+    display: $display;
+    height: $height;
+    flex-direction: $flexd;
+    flex-wrap: $flexw;
+}
+
+//---------------------------------------------------------------------Menu Burger
+input[type="checkbox"] {
+    display: none;
+}
+// Positionnement Bouton
+.labl {
+    position: fixed;
+    top: 5%;
+    right: 2%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: transparent;
+    z-index: 9999;
+}
+
+//Bouton
+.burger {
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .bar {
+        padding: 0;
+        width: 40px;
+        height: 4px;
+        background-color: map-get($mapColors, primary );
+        border-radius: 4px;
+        position: absolute;
+        transition: rotate 0.1s, transform 0.2s ease-in-out 0.1s;
+    }
+}
+// Position Elements du Burger
+.bar1 {
+    top: 1px;
+}
+.bar2 {
+    top: 13px;
+}
+.bar3 {
+    top: 25px;
+}
+//Animation Burger Checked
+input[type="checkbox"]:checked + label > .burger > .bar1{
+    top:13.5px;
+    transform: rotate(135deg);
+}
+input[type="checkbox"]:checked + label > .burger > .bar2 {
+    background-color: transparent;
+}
+input[type="checkbox"]:checked + label > .burger > .bar3 {
+    top:13.5px;
+    transform: rotate(-135deg);
+}
+// Volet droite
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100vh;
+    translate: 300%;
+    background-color: #1e1c1c;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transition: translate 0.5s;
+    z-index: 3;
+}
+// Animation Volet Droite
+input[type="checkbox"]:checked ~ .navbar {
+    translate: 0%;
+}
+// Texte Menu
+.navbar li {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+.navbar a {
+    @include textf(map-get($mapColors, secondary),Dancing Script, 2.5rem, 300, none);
+    text-decoration: none;
+    margin: 10px;
+    transition: all 0.5s ease-out;
+}
+// Animation Texte Menu
+.navbar a:hover{
+    color: map-get($mapColors, primary);
+    scale: 1.1;
+}
+
+// Volet Gauche
+.autrevolet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    background-color: #262626;
+    flex-direction: column;
+    z-index: 2;
+    translate: -300%;
+    transition: translate 0.5s ;
+}
+// Animation Volet Gauche
+input[type="checkbox"]:checked ~ .autrevolet {
+    translate: 0%;
+}
+// Position Images Volet Gauche
+@for $t from 1 to 4 {
+    .img#{$t} {
+        position: absolute;
+        height: 250px;
+        left: calc(-5% + (15%*$t));
+        top: calc(-5% + (20%*$t));
+        transform: translateX(-50);
+        box-shadow: 0 0 50px rgb(0, 0, 0, 0.5);
+        border-radius: 20px;
+        opacity: 0.8;
+    }
+}
+// -----------------------------------------------------------------------LANDING
+.box1 {
+    height:100vh;
+    background: url(../src/bg.jpeg) no-repeat center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 0 0 1000px map-get($mapColors, shadeval1);
+    align-items: center;
+    justify-content: center;
+    gap: 40px
+}
+//Position Logo 1
+.logo1 {
+    @include logo(flex, 90px, column, wrap);
+    position: absolute;
+    top: 5vh;
+    align-items: center;
+}
+//Composants Logo
+    // Positionnement des Elements
+.bglogo {
+    padding: 4px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: map-get($mapColors, primary) 1px solid;
+    margin: 10px;
+}
+    // Contour du Logo
+.logocontour {
+    padding: 15px;
+    width: 80px;
+    height: 80px;
+}
+    // Nom de la Marque
+.brandname {
+    @include textf(map-get($mapColors, secondary),Josefin Sans, 2.25rem, 300, uppercase);
+    margin: 25px 0 5px 0;
+}
+    // Sous-Titre Logo
+.subtitle {
+    @include textf(map-get($mapColors, secondary),Josefin Sans, 1rem, 300, uppercase);
+}
+// Titre 1
+h1 {
+    @include textf(map-get($mapColors, primary),Dancing Script, 4.5rem, 300, none);
+}
+//Titre 2
+h2 {
+    @include textf(map-get($mapColors, secondary),Josefin Sans, 4rem, 200, none);
+}
+//Bouton 1
+.bouton {
+    @include textf(map-get($mapColors, primary),Nunito, 1rem, 500, uppercase);
+    padding: 8px 40px 8px 40px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: map-get($mapColors, primary) 1px solid;
+    transition: background-color 0.5s;
+}
+//Animation Bouton
+.bouton:hover {
+    background-color: map-get($mapColors, primary);
+    color: map-get($mapColors, bgc )
+}
+
+// --------------------------------------------------------------------------------BODY
+.box2 {
+    height: 80vh;
+    background-color: map-get($mapColors, bgc );
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 15vh 0 15vh 0;
+    
+    align-items: center;
+    justify-content: center;
+    //Position Image
+    img {
+        align-self: flex-start;
+        justify-self: center;
+        height: 20vw;
+        object-position: -150px;
+        margin: 10vh 0 10vh 0;
+        opacity: 0.7;
+    }
+    h2 {
+        margin: 3vw 0 10vh 0
+    }
+}
+// Position Texte
+.foo {
+    align-self: center;
+    display: inherit;
+    flex-direction: inherit;
+    align-items: center;
+    width: 50vw;
+}
+// Séparateur *
+.divide {
+    @include textf(map-get($mapColors, primary),Nunito, 2rem, 600, none);
+    line-height: 3rem;
+    letter-spacing: 0.5rem;        
+}
+// Paragraphe
+p {
+    @include textf(map-get($mapColors, secondary),Nunito, 1rem, 800, none);
+    color: map-get($mapColors, secondary);
+    font-style: italic;
+    text-align: justify;
+    text-indent: 3rem;
+}
+
+// Grille Cartons Nourriture
+.box3 {
+    display: grid;
+    grid: repeat(2, 500px) / repeat(3, 1fr) ;
+}
+//Overlay Cartons
+.overlay {
+    background-color: rgba(211, 169, 83, 0.5);
+    height: 100%;
+    width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    line-height: 6vh;
+    transition: 0.5s ease-out;
+    h2 {
+        @include textf(white, Nunito, 4rem, 300, none);
+        white-space: nowrap;
+    }
+    h3 {
+        @include textf(white, Josefin Sans, 2.5rem, 200, none);
+        margin-bottom: 3vh;
+        white-space: nowrap;
+    }
+    button {
+        @include textf(map-get($mapColors, primary),Nunito, 1.3rem, 800, none);
+        background-color: white;
+        border:map-get($mapColors, primary) 2px solid;
+        padding: 10px 30px;
+        border-radius: 25px;
+        transition: background-color 0.2s ease-in-out;
+        white-space: nowrap;
+        &:hover {
+            background-color: map-get($mapColors, primary );
+            color: white;
+            border-color: white;
+
+        }
+    }
+}
+// Animation Overlay
+.cartonfood:hover .overlay{
+    width: 100%;
+}
+//Contenu Cartons
+@for $i from 1 through 6{
+    .f#{$i} {
+        background-image: url(../src/gallery-img-#{$i}.jpeg);
+        box-shadow: inset 0 0 0 1000px map-get($mapColors, shadeval2);
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+// FOOTER
+footer {
+    background-color: map-get($mapColors, bgc);
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    a {
+        color: map-get($mapColors, secondary);
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+}
+// Position Elements
+.piedcore {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    align-content: center;
+    justify-content: center;
+    gap: 70px;
+    
+}
+//Position logo
+.logo2 {
+    @include logo (flex, 90px, column, wrap);
+    align-items: center;
+    scale: 1.5;
+  }
+// Logo Réseaux Sociaux
+.socmedlogo {
+    height: 50px;
+    width: 50px;
+    fill: map-get($mapColors, secondary);
+    margin: 0 20px;
+    transition: fill 0.5s ease-out;
+    &:hover {
+        fill: map-get($mapColors, primary);
+    }
+}
+// --------------------------------------------------------------------RESPONSIVITE
+@media screen and (max-width: 1024px) {
+    //Menu
+    .navbar {
+        left: 0;
+        width: 100%;
+    }
+    .autrevolet {
+        display: none;
+    }
+
+    h2 {
+        text-align: center;
+        scale: 0.75;
+    }
+    // Redimensionnement Seconde Partie
+    .box2 {
+        .foo {
+            width: 90%;
+            h2 {
+            margin-bottom: 0vh;
+            }
+        }
+    }
+    // Cacher l'image
+    .box2 img {
+        display: none;
+    }
+    // Redimensionnement Troisieme Partie
+    .box3 {
+        grid: repeat(3, 500px) / repeat(2, 50vw) ;
+    }
+    //Modification Taille Texte Cartons
+    .overlay {
+        h2, h3, .bouton {
+            scale: 0.65;
+        }
+    }
+}
